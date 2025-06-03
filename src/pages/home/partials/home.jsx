@@ -3,6 +3,10 @@ import Images from '../../../constant/images'
 import { Carousel } from 'flowbite';
 import { motion } from "framer-motion";
 import images from '../../../constant/images';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 
 const Home = () => {
     useEffect(() => {
@@ -16,7 +20,7 @@ const Home = () => {
 
                 <div className="relative overflow-hidden rounded-lg md:h-[35rem]">
 
-                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col " data-carousel-item="active"
+                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col " data-carousel-item=""
                         style={{ backgroundImage: `url(${Images.carousel1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className='flex justify-center align-center align-content-center align-self-center flex-col gap-3'>
                             <span className='text-white font-bold mb-3 '>Women collection 2025</span>
@@ -33,7 +37,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col" data-carousel-item="active"
+                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col" data-carousel-item=""
                         style={{ backgroundImage: `url(${Images.carousel2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className='flex justify-center align-center align-content-center align-self-center flex-col gap-3'>
                             <span className='text-white font-bold mb-3 '>Women collection 2025</span>
@@ -50,7 +54,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col" data-carousel-item="active"
+                    <div className="duration-300 ease-in-out absolute inset-0 transition-all transform translate-x-0 text-center flex justify-center align-center align-content-center align-self-center flex-col" data-carousel-item=""
                         style={{ backgroundImage: `url(${Images.carousel3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className='flex justify-center align-center align-content-center align-self-center flex-col gap-3'>
                             <span className='text-white font-bold mb-3 '>Women collection 2025</span>
@@ -85,6 +89,8 @@ const Home = () => {
                     </span>
                 </button>
             </div>
+
+
             <div className='flex flex-row gap-8 py-10 px-36 justify-center'>
                 <div className='flex flex-col gap-8'>
                     <div className="relative w-full h-[80vh] overflow-hidden">
@@ -116,7 +122,7 @@ const Home = () => {
                 </div>
                 <div className='flex flex-col gap-8'>
                     <div className="relative w-full h-[80vh] overflow-hidden">
-                        <img src={images.cards3} alt="BAGS" className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"/>
+                        <img src={images.cards3} alt="BAGS" className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110" />
                         <button className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-black px-6 py-3 shadow-md uppercase tracking-wider text-sm hover:bg-[#e65540] hover:text-white">
                             BAGS
                         </button>
@@ -131,6 +137,28 @@ const Home = () => {
 
 
             </div>
+
+            <div className='text-center  p-8'>
+                <h1 className='pb-16 font-bold text-3xl'>FEATURED PRODUCTS</h1>
+                <Swiper modules={[Navigation]} navigation spaceBetween={20} slidesPerView={4} loop >
+                    {[Images.shopy8, Images.shopy7, Images.shopy6, Images.shopy5, Images.shopy4, Images.shopy3, Images.shopi2, Images.item03].map((img, idx) => (
+                        <SwiperSlide key={idx}>
+                            <div className="relative w-full h-[500px] overflow-hidden group">
+                                <img src={img} alt={`item-${idx}`} className="w-full h-full object-cover transition duration-300 group-hover:scale-105" />
+                                <div className="absolute inset-0 flex justify-center items-center bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300">
+                                    <button className="bg-white absolute bottom-6 left-1/2 -translate-x-1/2 text-black px-6 py-2 rounded-full hover:bg-[#e65540] hover:text-white">
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                                <p>Boxy2 T-Shirt with Roll Sleeve</p>
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+
+
+
         </>
     );
 };
